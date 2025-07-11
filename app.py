@@ -1,4 +1,5 @@
 from flask import Flask , redirect , request , jsonify
+from flask_cors import CORS
 from pymongo import MongoClient
 
 client = MongoClient("mongodb+srv://sriram65raja:1324sriram@cluster0.dejys.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -6,7 +7,7 @@ db = client['ai']
 CLOUDFLARE_URLS = db['CLOUDFLARE_URLS']
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/get-url')
 def Get_url():
